@@ -15,8 +15,8 @@ class CreateUsuarioCampeonatosTable extends Migration
     {
         Schema::create('usuarios_campeonatos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('usuario_id');
-            $table->unsignedInteger('campeonato_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('campeonato_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('campeonato_id')->references('id')->on('campeonatos');
             $table->decimal('puntuacion')->nullable();

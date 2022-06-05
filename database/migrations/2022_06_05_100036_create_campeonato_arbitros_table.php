@@ -15,8 +15,8 @@ class CreateCampeonatoArbitrosTable extends Migration
     {
         Schema::create('campeonatos_arbitros', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('arbitro_id');
-            $table->unsignedInteger('campeonato_id');
+            $table->unsignedBigInteger('arbitro_id');
+            $table->unsignedBigInteger('campeonato_id');
             $table->foreign('arbitro_id')->references('id')->on('arbitros');
             $table->foreign('campeonato_id')->references('id')->on('campeonatos');
             $table->timestamps();

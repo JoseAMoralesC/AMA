@@ -16,7 +16,7 @@ class CreateEstilosTable extends Migration
         Schema::create('estilos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->unsignedInteger('disciplina_id');
+            $table->unsignedBigInteger('disciplina_id');
             $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->timestamps();
         });

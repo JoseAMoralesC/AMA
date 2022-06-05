@@ -15,8 +15,8 @@ class CreateUsuarioCuotasTable extends Migration
     {
         Schema::create('usuarios_cuotas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('usuario_id');
-            $table->unsignedInteger('cuota_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('cuota_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('cuota_id')->references('id')->on('cuotas');
             $table->date('fecha_pago');

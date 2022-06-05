@@ -15,8 +15,8 @@ class CreateUsuarioGimnasiosTable extends Migration
     {
         Schema::create('usuarios_gimnasios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('usuario_id');
-            $table->unsignedInteger('gimnasio_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('gimnasio_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('gimnasio_id')->references('id')->on('gimnasios');
             $table->date('fecha_alta');

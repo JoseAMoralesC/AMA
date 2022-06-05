@@ -21,7 +21,7 @@ class CreateCursosTable extends Migration
             $table->time('hora_ini');
             $table->time('hora_fin')->nullable();
             $table->decimal('precio')->nullable();
-            $table->unsignedInteger('gimnasio_id');
+            $table->unsignedBigInteger('gimnasio_id');
             $table->foreign('gimnasio_id')->references('id')->on('gimnasios');
             $table->timestamps();
         });

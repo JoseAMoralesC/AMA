@@ -15,8 +15,8 @@ class CreateUsuarioProductosTable extends Migration
     {
         Schema::create('usuarios_productos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('usuario_id');
-            $table->unsignedInteger('producto_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->unsignedBigInteger('producto_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('producto_id')->references('id')->on('productos');
             $table->unsignedInteger('cantidad');

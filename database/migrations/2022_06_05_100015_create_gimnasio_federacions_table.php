@@ -15,8 +15,8 @@ class CreateGimnasioFederacionsTable extends Migration
     {
         Schema::create('gimnasios_federaciones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('gimnasio_id');
-            $table->unsignedInteger('federacion_id');
+            $table->unsignedBigInteger('gimnasio_id');
+            $table->unsignedBigInteger('federacion_id');
             $table->foreign('gimnasio_id')->references('id')->on('gimnasios');
             $table->foreign('federacion_id')->references('id')->on('federaciones');
             $table->date('fecha_alta');

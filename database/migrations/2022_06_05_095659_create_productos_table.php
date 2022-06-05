@@ -19,8 +19,8 @@ class CreateProductosTable extends Migration
             $table->decimal('precio');
             $table->string('descripcion')->nullable();
             $table->unsignedInteger('stock');
-            $table->unsignedInteger('marca_id');
-            $table->unsignedInteger('categoria_id');
+            $table->unsignedBigInteger('marca_id');
+            $table->unsignedBigInteger('categoria_id');
             $table->foreign('marca_id')->references('id')->on('marcas');
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
