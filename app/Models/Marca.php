@@ -8,4 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 class Marca extends Model
 {
     use HasFactory;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'marcas';
+
+    /**
+     * The database primary key value.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'nombre',
+        'url_web'
+    ];
 }

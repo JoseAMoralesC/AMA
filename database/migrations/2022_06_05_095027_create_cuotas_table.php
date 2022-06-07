@@ -17,7 +17,7 @@ class CreateCuotasTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->decimal('precio');
-            $table->integer('meses_suscrripcion');
+            $table->integer('meses_suscripcion');
             $table->timestamps();
         });
     }

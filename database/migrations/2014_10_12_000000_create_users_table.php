@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('cod_postal')->nullable();
             $table->string('email')->unique();
             $table->string('telefono')->nullable();
-            $table->string('dni')->unique();
+            $table->string('dni')->unique()->nullable();
             $table->string('usuario')->unique();
             $table->string('password');
             $table->enum('tipo',['Administrador','Normal'])->default('Normal');
