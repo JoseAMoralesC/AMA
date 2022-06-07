@@ -19,9 +19,10 @@ Route::get('/', [HomeController::class,'index']);
 Auth::routes();
 
 Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(function () {
+    //INICIO
     Route::get('', [App\Http\Controllers\Admin\Index\IndexController::class,'index'])->name('index');
-    //Route::get('disciplinas', [App\Http\Controllers\Admin\Disciplina\IndexController::class,'index'])->name('disciplinas.index');
 
+    //DISCIPLINAS
     Route::prefix('/disciplinas/')->name('disciplinas.')->group(function(){
         Route::get('', [App\Http\Controllers\Admin\Disciplina\IndexController::class,'index'])->name('index');
         Route::get('/indexAjax', [App\Http\Controllers\Admin\Disciplina\IndexController::class,'indexAjax'])->name('indexAjax');
@@ -33,6 +34,7 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
         Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Disciplina\DestroyController::class,'destroy'])->name('destroy');
     });
 
+    //ESTILOS
     Route::prefix('/estilos/')->name('estilos.')->group(function(){
         Route::get('', [App\Http\Controllers\Admin\Estilo\IndexController::class,'index'])->name('index');
         Route::get('/indexAjax', [App\Http\Controllers\Admin\Estilo\IndexController::class,'indexAjax'])->name('indexAjax');
@@ -44,8 +46,124 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
         Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Estilo\DestroyController::class,'destroy'])->name('destroy');
     });
 
-    Route::prefix('usuarios/')->name('usuarios.')->group(function(){
+    //FEDERACIONES
+    Route::prefix('/federaciones/')->name('federaciones.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Federacion\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Federacion\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Federacion\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Federacion\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Federacion\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Federacion\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Federacion\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Federacion\DestroyController::class,'destroy'])->name('destroy');
+    });
 
+    //REGLAMENTOS
+    Route::prefix('/reglamentos/')->name('reglamentos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Reglamento\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Reglamento\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Reglamento\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Reglamento\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Reglamento\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Reglamento\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Reglamento\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Reglamento\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //USUARIOS
+    Route::prefix('usuarios/')->name('usuarios.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Usuario\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Usuario\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Usuario\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Usuario\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Usuario\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Usuario\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Usuario\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Usuario\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //GIMNASIOS
+    Route::prefix('gimnasios/')->name('gimnasios.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Gimnasio\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Gimnasio\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Gimnasio\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Gimnasio\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Gimnasio\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Gimnasio\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //CURSOS
+    Route::prefix('cursos/')->name('cursos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Curso\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Curso\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Curso\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Curso\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Curso\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Curso\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Curso\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Curso\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //CAMPEONATOS
+    Route::prefix('campeonatos/')->name('campeonatos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Campeonato\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Campeonato\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Campeonato\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Campeonato\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Campeonato\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Campeonato\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Campeonato\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Campeonato\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //ARBITROS
+    Route::prefix('arbitros/')->name('arbitros.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Arbitro\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Arbitro\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Arbitro\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Arbitro\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Arbitro\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Arbitro\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Arbitro\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Arbitro\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //TIENDA
+    Route::prefix('tienda/')->name('tienda.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Tienda\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Tienda\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Tienda\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Tienda\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Tienda\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Tienda\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Tienda\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Tienda\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //CATEGORIAS
+    Route::prefix('categorias/')->name('categorias.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Categoria\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Categoria\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Categoria\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Categoria\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Categoria\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Categoria\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Categoria\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Categoria\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //MARCAS
+    Route::prefix('marcas/')->name('marcas.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Marca\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Marca\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Marca\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Marca\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Marca\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Marca\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Marca\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Marca\DestroyController::class,'destroy'])->name('destroy');
     });
 });
 

@@ -10,7 +10,7 @@
         <div class="card-header">
             <div class="row justify-content-end">
                 <div class="btn-group">
-                    <a href="{{ route('admin.disciplinas.create') }}" class="btn btn-dark btn-sm"><span class="fa fa-plus"></span><br>{{__('Nuevo')}}</a>
+                    <a href="{{ route('admin.disciplinas.create') }}" class="btn btn-dark btn-sm"><span class="fa fa-plus"></span><br>{{__('Nueva')}}</a>
                 </div>
             </div>
         </div>

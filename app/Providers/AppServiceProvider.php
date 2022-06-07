@@ -120,10 +120,6 @@ class AppServiceProvider extends ServiceProvider
                                 'text' => 'Marcas',
                                 'url'  => '/admin/marcas',
                             ],
-                            [
-                                'text' => 'Proveedores',
-                                'url'  => '/admin/proveedores',
-                            ],
                         ],
                     ],
                 );
