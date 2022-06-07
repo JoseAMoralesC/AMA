@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', __('Disciplinas'))
+@section('title', __('Disciplinas | Editar'))
 
 @section('content_header')
     <h1>{{ __('Disciplinas') }}</h1>
