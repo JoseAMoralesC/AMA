@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Estilo extends Model
-{
+class Estilo extends Model{
     use HasFactory;
 
     /**
@@ -32,4 +31,8 @@ class Estilo extends Model
         'nombre',
         'disciplina_id'
     ];
+
+    public function disciplinas(){
+        return $this->hasMany(Disciplina::class, 'disciplina_id');
+    }
 }
