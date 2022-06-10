@@ -82,6 +82,18 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
         Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Usuario\DestroyController::class,'destroy'])->name('destroy');
     });
 
+    //CUOTAS
+    Route::prefix('cuotas/')->name('cuotas.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Cuota\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Cuota\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Cuota\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Cuota\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Cuota\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Cuota\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Cuota\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Cuota\DestroyController::class,'destroy'])->name('destroy');
+    });
+
     //GIMNASIOS
     Route::prefix('gimnasios/')->name('gimnasios.')->group(function(){
         Route::get('', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'index'])->name('index');
@@ -140,6 +152,18 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
         Route::post('/store', [App\Http\Controllers\Admin\Tienda\StoreController::class,'store'])->name('store');
         Route::put('/update/{id}', [App\Http\Controllers\Admin\Tienda\UpdateController::class,'update'])->name('update');
         Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Tienda\DestroyController::class,'destroy'])->name('destroy');
+    });
+
+    //PRODUCTOS
+    Route::prefix('productos/')->name('productos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Admin\Producto\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Admin\Producto\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/create', [App\Http\Controllers\Admin\Producto\CreateController::class,'create'])->name('create');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Producto\EditController::class,'edit'])->name('edit');
+        Route::get('/show/{id}', [App\Http\Controllers\Admin\Producto\ShowController::class,'show'])->name('show');
+        Route::post('/store', [App\Http\Controllers\Admin\Producto\StoreController::class,'store'])->name('store');
+        Route::put('/update/{id}', [App\Http\Controllers\Admin\Producto\UpdateController::class,'update'])->name('update');
+        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Producto\DestroyController::class,'destroy'])->name('destroy');
     });
 
     //CATEGORIAS

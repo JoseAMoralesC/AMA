@@ -2,30 +2,26 @@
 
 namespace App\Repositories\Usuario;
 
-use App\Models\Usuario;
+use App\Models\User;
 
 class UsuarioRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return User::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return User::all();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($usuario){
+        return User::insert($usuario);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($usuario, $datos){
+        return $usuario->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
-    }
-
-    public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+        return User::destroy($id);
     }
 }

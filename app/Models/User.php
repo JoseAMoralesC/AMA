@@ -12,6 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const USUARIO_NORMAL = "Normal";
+    public const USUARIO_ADMINISTRADOR = "Administrador";
+
+    public const USUARIO_HOMBRE = "Hombre";
+    public const USUARIO_MUJER = "Mujer";
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -50,4 +57,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function tiposEnArray():array{
+        return [
+            User::USUARIO_NORMAL => __('Normal'),
+            User::USUARIO_ADMINISTRADOR => __('Administrador')
+        ];
+    }
+
+    public static function sexoEnArray():array{
+        return [
+            User::USUARIO_HOMBRE => __('Hombre'),
+            User::USUARIO_MUJER => __('Mujer')
+        ];
+    }
 }

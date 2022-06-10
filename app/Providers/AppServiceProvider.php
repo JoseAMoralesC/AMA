@@ -85,6 +85,11 @@ class AppServiceProvider extends ServiceProvider
                         'url'  => '/admin/usuarios',
                     ],
                     [
+                        'text'    => __('Cuotas'),
+                        'icon'    => 'fas fa-fw fa-credit-card',
+                        'url'  => '/admin/cuotas',
+                    ],
+                    [
                         'text'    => 'Gimnasios',
                         'icon'    => 'fas fa-fw fa-university',
                         'url'  => '/admin/gimnasios',
@@ -111,6 +116,10 @@ class AppServiceProvider extends ServiceProvider
                             [
                                 'text' => 'Tienda',
                                 'url'  => '/admin/tienda',
+                            ],
+                            [
+                                'text' => 'Productos',
+                                'url'  => '/admin/productos',
                             ],
                             [
                                 'text' => 'Categorias',
