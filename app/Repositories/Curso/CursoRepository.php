@@ -6,26 +6,36 @@ use App\Models\Curso;
 
 class CursoRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return Curso::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return Curso::join('gimnasios','gimnasios.id','cursos.gimnasio_id')->
+            select(
+                'cursos.id as id',
+                'cursos.nombre as nombre',
+                'cursos.fecha_ini as fecha_ini',
+                'cursos.fecha_fin as fecha_fin',
+                'cursos.hora_ini as hora_ini',
+                'cursos.hora_fin as hora_fin',
+                'cursos.precio as precio',
+                'gimnasios.nombre as gimnasio',
+            )->get();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($curso){
+        return Curso::insert($curso);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($curso, $datos){
+        return $curso->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
+        return Curso::destroy($id);
     }
 
     public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+        return Curso::all()->pluck('nombre','id');
     }
 }

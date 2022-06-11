@@ -41,8 +41,6 @@ class UpdateController extends Controller
             DB::connection()->rollBack();
             Log::error($e);
 
-            dd($e);
-
             return redirect()->route('admin.cuotas.index')->with('error','La cuota '.$request->nombre.' no se ha podido actualizar');
         }
 

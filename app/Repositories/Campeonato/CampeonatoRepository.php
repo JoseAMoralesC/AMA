@@ -6,26 +6,26 @@ use App\Models\Campeonato;
 
 class CampeonatoRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return Campeonato::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return Campeonato::all();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($campeonato){
+        return Campeonato::insert($campeonato);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($campeonato, $datos){
+        return $campeonato->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
+        return Campeonato::destroy($id);
     }
 
     public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+        return Campeonato::all()->pluck('nombre','id');
     }
 }

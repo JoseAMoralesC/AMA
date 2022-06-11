@@ -6,26 +6,26 @@ use App\Models\Gimnasio;
 
 class GimnasioRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return Gimnasio::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return Gimnasio::all();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($gimnasio){
+        return Gimnasio::insert($gimnasio);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($gimnasio, $datos){
+        return $gimnasio->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
+        return Gimnasio::destroy($id);
     }
 
-    public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+    public function gimnasiosSelect(){
+        return Gimnasio::all()->pluck('nombre','id');
     }
 }
