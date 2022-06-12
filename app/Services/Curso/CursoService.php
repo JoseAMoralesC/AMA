@@ -56,7 +56,7 @@ class CursoService{
         $datos['updated_at'] = Carbon::now();
         $datos['precio'] =  round($datos['precio'],2);
 
-        $this->cursoRepository->update($curso, $datos);
+        return $this->cursoRepository->update($curso, $datos);
     }
 
     public function destroy($id){

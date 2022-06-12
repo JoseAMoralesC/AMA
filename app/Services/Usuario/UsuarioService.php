@@ -54,7 +54,7 @@ class UsuarioService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->usuarioRepository->update($usuario, $datos);
+        return $this->usuarioRepository->update($usuario, $datos);
     }
 
     public function destroy($id){

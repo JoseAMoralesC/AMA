@@ -53,8 +53,6 @@ class UpdateController extends Controller
             DB::connection()->rollBack();
             Log::error($e);
 
-            dd($e);
-
             return redirect()->route('admin.usuarios.index')->with('error','El usuario '.$request->nombre.' no se ha podido actualizar');
         }
 

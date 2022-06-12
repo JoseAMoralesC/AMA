@@ -5,7 +5,6 @@ namespace App\Services\Campeonato;
 use App\Repositories\Campeonato\CampeonatoRepository;
 use Carbon\Carbon;
 
-use Illuminate\Support\Facades\Hash;
 
 class CampeonatoService{
 
@@ -48,7 +47,7 @@ class CampeonatoService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->campeonatoRepository->update($gimnasio, $datos);
+        return $this->campeonatoRepository->update($gimnasio, $datos);
     }
 
     public function destroy($id){

@@ -31,4 +31,8 @@ class Disciplina extends Model
     protected $fillable = [
         'nombre'
     ];
+
+    public function arbitros(){
+        return $this->belongsToMany(Arbitro::class, 'arbitros_disciplinas', 'arbitro_id', 'disciplina_id');
+    }
 }

@@ -16,9 +16,9 @@ class CreateArbitroDisciplinasTable extends Migration
         Schema::create('arbitros_disciplinas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('arbitro_id');
-            $table->unsignedBigInteger('campeonato_id');
+            $table->unsignedBigInteger('disciplina_id');
             $table->foreign('arbitro_id')->references('id')->on('arbitros');
-            $table->foreign('campeonato_id')->references('id')->on('campeonatos');
+            $table->foreign('disciplina_id')->references('id')->on('disciplinas');
             $table->timestamps();
         });
     }

@@ -41,7 +41,7 @@ class ReglamentoService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->reglamentoRepository->update($disciplina, $datos);
+        return $this->reglamentoRepository->update($disciplina, $datos);
     }
 
     public function destroy($id){

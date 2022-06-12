@@ -19,9 +19,9 @@ class CreateArbitrosTable extends Migration
             $table->string('apellido1');
             $table->string('apellido2')->nullable();
             $table->date('fec_nac');
-            $table->string('nacionalidad');
+            $table->string('nacionalidad')->nullable();
             $table->string('email');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->timestamps();
         });
     }

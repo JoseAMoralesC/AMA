@@ -22,7 +22,7 @@ class StoreController extends Controller
             'apellido1' => 'required',
             'fec_nac' => 'required',
             'sexo' => 'required',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|unique:users,email|email',
             'usuario' => 'required|unique:users,usuario',
             'password' => 'required|same:repetir_password',
             'tipo' => 'required'

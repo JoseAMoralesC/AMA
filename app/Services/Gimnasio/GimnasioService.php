@@ -47,7 +47,7 @@ class GimnasioService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->gimnasioRepository->update($gimnasio, $datos);
+        return $this->gimnasioRepository->update($gimnasio, $datos);
     }
 
     public function destroy($id){

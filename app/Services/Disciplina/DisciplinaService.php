@@ -41,7 +41,7 @@ class DisciplinaService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->disciplinaRepository->update($disciplina, $datos);
+        return $this->disciplinaRepository->update($disciplina, $datos);
     }
 
     public function destroy($id){

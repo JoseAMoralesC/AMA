@@ -41,7 +41,7 @@ class FederacionService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->federacionRepository->update($disciplina, $datos);
+        return $this->federacionRepository->update($disciplina, $datos);
     }
 
     public function destroy($id){

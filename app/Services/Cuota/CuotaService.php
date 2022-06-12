@@ -47,7 +47,7 @@ class CuotaService{
 
         $datos['precio'] =  round($datos['precio'],2);
 
-        $this->cuotaRepository->update($usuario, $datos);
+        return $this->cuotaRepository->update($usuario, $datos);
     }
 
     public function destroy($id){

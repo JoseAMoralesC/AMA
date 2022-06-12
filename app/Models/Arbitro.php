@@ -10,24 +10,24 @@ class Arbitro extends Model
     use HasFactory;
 
     /**
-    * The database table used by the model.
-    *
-    * @var string
-    */
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'arbitros';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array<int, string>
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'nombre',
         'apellido1',
@@ -36,4 +36,8 @@ class Arbitro extends Model
         'email',
         'telefono'
     ];
+
+    public function disciplinas(){
+        return $this->belongsToMany(Disciplina::class, 'arbitros_disciplinas', 'arbitro_id', 'disciplina_id');
+    }
 }

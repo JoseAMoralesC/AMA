@@ -42,7 +42,7 @@ class EstiloService{
 
         $datos['updated_at'] = Carbon::now();
 
-        $this->estiloRepository->update($disciplina, $datos);
+        return $this->estiloRepository->update($disciplina, $datos);
     }
 
     public function destroy($id){
