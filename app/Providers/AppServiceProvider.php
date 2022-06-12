@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 
@@ -33,7 +34,12 @@ class AppServiceProvider extends ServiceProvider
                         'text' => __('Inicio'),
                         'icon' => 'fas fa-fw fa-home',
                         'url' => '/admin',
-                    ]
+                    ],
+                    [
+                        'text' => __('Perfil'),
+                        'icon' => 'fas fa-fw fa-user',
+                        'url' => '/admin/usuarios/edit/'.Auth::user()->id,
+                    ],
                 );
             }
 

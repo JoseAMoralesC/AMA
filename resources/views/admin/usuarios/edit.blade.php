@@ -10,7 +10,11 @@
         <div class="card-header">
             <div class="row justify-content-end">
                 <div class="btn-group">
-                    <a href="{{ route('admin.usuarios.index') }}" class="btn btn-dark btn-sm"><span class="fa fa-reply"></span><br>{{__('Volver')}}</a>
+                    @if(\Auth::user()->id == $usuario->id)
+                        <a href="{{ route('admin.index') }}" class="btn btn-dark btn-sm"><span class="fa fa-reply"></span><br>{{__('Volver')}}</a>
+                    @else
+                        <a href="{{ route('admin.usuarios.index') }}" class="btn btn-dark btn-sm"><span class="fa fa-reply"></span><br>{{__('Volver')}}</a>
+                    @endif
                 </div>
             </div>
         </div>

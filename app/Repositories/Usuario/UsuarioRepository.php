@@ -3,6 +3,7 @@
 namespace App\Repositories\Usuario;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioRepository{
     public function getById($id){
@@ -10,7 +11,7 @@ class UsuarioRepository{
     }
 
     public function index(){
-        return User::all();
+        return User::query()->where('id','<>',Auth::user()->id)->get();
     }
 
     public function store($usuario){

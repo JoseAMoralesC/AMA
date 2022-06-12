@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Gimnasio;
 use Illuminate\Routing\Controller;
 use App\Services\Gimnasio\GimnasioService;
 use App\Services\Usuario\UsuarioService;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
