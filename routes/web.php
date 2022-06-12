@@ -142,18 +142,6 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
         Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Arbitro\DestroyController::class,'destroy'])->name('destroy');
     });
 
-    //TIENDA
-    Route::prefix('tienda/')->name('tienda.')->group(function(){
-        Route::get('', [App\Http\Controllers\Admin\Tienda\IndexController::class,'index'])->name('index');
-        Route::get('/indexAjax', [App\Http\Controllers\Admin\Tienda\IndexController::class,'indexAjax'])->name('indexAjax');
-        Route::get('/create', [App\Http\Controllers\Admin\Tienda\CreateController::class,'create'])->name('create');
-        Route::get('/edit/{id}', [App\Http\Controllers\Admin\Tienda\EditController::class,'edit'])->name('edit');
-        Route::get('/show/{id}', [App\Http\Controllers\Admin\Tienda\ShowController::class,'show'])->name('show');
-        Route::post('/store', [App\Http\Controllers\Admin\Tienda\StoreController::class,'store'])->name('store');
-        Route::put('/update/{id}', [App\Http\Controllers\Admin\Tienda\UpdateController::class,'update'])->name('update');
-        Route::delete('/destroy/{id}', [App\Http\Controllers\Admin\Tienda\DestroyController::class,'destroy'])->name('destroy');
-    });
-
     //PRODUCTOS
     Route::prefix('productos/')->name('productos.')->group(function(){
         Route::get('', [App\Http\Controllers\Admin\Producto\IndexController::class,'index'])->name('index');
@@ -193,6 +181,11 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
 
 Route::middleware(['auth.normal'])->name('usuario.')->prefix('/usuario')->group(function () {
     Route::get('', [App\Http\Controllers\Normal\Index\IndexController::class,'index'])->name('index');
+});
+
+//TIENDA
+Route::prefix('tienda/')->name('tienda.')->group(function(){
+    Route::get('', [App\Http\Controllers\Tienda\IndexController::class,'index'])->name('index');
 });
 
 //Route::get('/admin', [App\Http\Controllers\Admin\Index\IndexController::class,'index'])->middleware('auth.admin')->name('admin.index');

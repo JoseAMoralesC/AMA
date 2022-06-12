@@ -6,26 +6,26 @@ use App\Models\Categoria;
 
 class CategoriaRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return Categoria::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return Categoria::all();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($categoria){
+        return Categoria::insert($categoria);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($categoria, $datos){
+        return $categoria->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
+        return Categoria::destroy($id);
     }
 
-    public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+    public function categoriasSelect(){
+        return Categoria::all()->pluck('nombre','id');
     }
 }

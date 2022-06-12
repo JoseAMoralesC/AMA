@@ -32,4 +32,8 @@ class Marca extends Model
         'nombre',
         'url_web'
     ];
+
+    public function productos(){
+        return $this->hasMany(Producto::class, 'id','marca_id');
+    }
 }

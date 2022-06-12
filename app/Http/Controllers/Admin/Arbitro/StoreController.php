@@ -26,9 +26,9 @@ class StoreController extends Controller
             'disciplina' => 'required'
         ],
         [
-            'nombre.required' => __('El nombre del usuario es obligatorio'),
-            'apellido1.required' => __('El primer apellido del usuario es obligatorio'),
-            'fec_nac.required' => __('La fecha de nacimiento del usuario es obligatoria'),
+            'nombre.required' => __('El nombre del arbitro es obligatorio'),
+            'apellido1.required' => __('El primer apellido del arbitro es obligatorio'),
+            'fec_nac.required' => __('La fecha de nacimiento del arbitro es obligatoria'),
             'email.required' => __('El campo email es obligatorio'),
             'email.unique' => __('Este email ya ha sido registrado'),
             'email.email' => __('No es una cuenta de email valida'),

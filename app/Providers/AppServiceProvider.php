@@ -115,7 +115,7 @@ class AppServiceProvider extends ServiceProvider
                         'submenu' => [
                             [
                                 'text' => 'Tienda',
-                                'url'  => '/admin/tienda',
+                                'url'  => '/tienda',
                             ],
                             [
                                 'text' => 'Productos',
@@ -171,7 +171,7 @@ class AppServiceProvider extends ServiceProvider
                     [
                         'text'    => 'Tienda',
                         'icon'    => 'fas fa-fw fa-shopping-cart',
-                        'url'  => '#',
+                        'url'  => '/tienda',
                     ],
                 );
             }

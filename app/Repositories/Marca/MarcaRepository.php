@@ -6,26 +6,26 @@ use App\Models\Marca;
 
 class MarcaRepository{
     public function getById($id){
-        return Disciplina::find($id);
+        return Marca::find($id);
     }
 
     public function index(){
-        return Disciplina::all();
+        return Marca::all();
     }
 
-    public function store($disciplina){
-        return Disciplina::insert($disciplina);
+    public function store($marca){
+        return Marca::insert($marca);
     }
 
-    public function update($disciplina, $datos){
-        return $disciplina->update($datos);
+    public function update($marca, $datos){
+        return $marca->update($datos);
     }
 
     public function destroy($id){
-        return Disciplina::destroy($id);
+        return Marca::destroy($id);
     }
 
-    public function disciplinasParaLosSelect(){
-        return Disciplina::all()->pluck('nombre','id');
+    public function marcasSelect(){
+        return Marca::all()->pluck('nombre','id');
     }
 }
