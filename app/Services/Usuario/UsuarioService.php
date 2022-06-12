@@ -5,6 +5,7 @@ namespace App\Services\Usuario;
 use App\Repositories\Usuario\UsuarioRepository;
 use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsuarioService{
@@ -55,6 +56,10 @@ class UsuarioService{
 
         $datos['password'] = $datos['password'] != null ? Hash::make($datos['password']) : $usuario->password;
         $datos['updated_at'] = Carbon::now();
+
+        if(Auth::user()->id == $id){
+            $datos['tipo'] = $usuario->tipo;
+        }
 
         $this->usuarioRepository->update($usuario, $datos);
         if(isset($datos['gimnasios'])){

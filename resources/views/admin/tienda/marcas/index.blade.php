@@ -55,7 +55,9 @@
                 {data: 'nombre', 'className': 'text-center'},
                 {data: null, 'className': 'text-center',
                     render: function(data,type,row,meta){
-                        if(data.url != null){
+                        if(data.url == null || data.url == 'null'){
+                            return '';
+                        }else{
                             return '<a href="'+data.url+'" class="text-danger">Web de '+data.nombre+' </a>';
                         }
                     }

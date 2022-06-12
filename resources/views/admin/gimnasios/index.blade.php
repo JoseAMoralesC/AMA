@@ -133,8 +133,6 @@
                         return resultado;
                     });
 
-                    console.log(tbody);
-
                     if(tbody != null){
                         $('tbody#verUsuariosEnGimnasios').html(tbody);
                     }
