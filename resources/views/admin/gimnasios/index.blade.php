@@ -35,6 +35,7 @@
         </div>
     </div>
 
+    @include('admin.gimnasios.modales._verUsuarios')
     @include('admin.gimnasios.modales._delete')
 @stop
 
@@ -62,10 +63,10 @@
                     render: function(data,type,row,meta){
                         let url;
                         let button = "";
-
+                        button += '<button type="button" id="gim-'+data.id+'" class="btn btn-dark ver-usuarios" title="{{__('Ver usuarios')}}" data-toggle="modal" data-target="#modalVerUsuarios"><i class="fa fa-users"></i></button> ';
                         url = '{{ url('admin/gimnasios/edit') }}/'+data.id;
-                        button += '<a href="'+url+'" class="btn btn-dark" title="{{__('Editar')}}"><i class="fa fa-edit"></i></a> '
-                        button += '<button type="button" id="'+data.id+'" class="btn btn-danger eliminar-gimnasio" title="{{__('Eliminar')}}" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i></button>'
+                        button += '<a href="'+url+'" class="btn btn-dark" title="{{__('Editar')}}"><i class="fa fa-edit"></i></a> ';
+                        button += '<button type="button" id="'+data.id+'" class="btn btn-danger eliminar-gimnasio" title="{{__('Eliminar')}}" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i></button>';
 
                         return button;
                     }
@@ -108,6 +109,37 @@
             let id = $(this).attr('id');
             let url = "{{ url('/admin/gimnasios/destroy') }}/" + id;
             $('#formularioEliminarGimnasio').attr('action', url);
+        });
+
+        $('#datatable-gimnasios tbody').on('click', '.ver-usuarios', function () {
+            let id = $(this).attr('id').split('-')[1];
+
+            $.ajax({
+                type: "get",
+                url: '{{ url('/admin/gimnasios/verUsuariosAjax') }}/'+id,
+                success: function(response) {
+                    let tbody = response.map(val =>{
+                        let activo = val.activo == true ? "Si" : "No";
+                        let nombre = val.apellido2 != null ? val.nombre+' '+val.apellido1+' '+val.apellido2 : val.nombre+' '+val.apellido1;
+                        let fecha = val.fec_nac.split('-');
+                        let fecha_nacimiento = fecha[2]+'/'+fecha[1]+'/'+fecha[0];
+                        let resultado = '<tr>' +
+                            '<td>'+val.usuario_id+'</td>'+
+                            '<td>'+nombre+'</td>'+
+                            '<td>'+fecha_nacimiento+'</td>'+
+                            '<td>'+activo+'</td>'+
+                            '</tr>';
+
+                        return resultado;
+                    });
+
+                    console.log(tbody);
+
+                    if(tbody != null){
+                        $('tbody#verUsuariosEnGimnasios').html(tbody);
+                    }
+                }
+            });
         });
     });
 </script>

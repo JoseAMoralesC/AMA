@@ -98,6 +98,7 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
     Route::prefix('gimnasios/')->name('gimnasios.')->group(function(){
         Route::get('', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'index'])->name('index');
         Route::get('/indexAjax', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'indexAjax'])->name('indexAjax');
+        Route::get('/verUsuariosAjax/{id}', [App\Http\Controllers\Admin\Gimnasio\IndexController::class,'verUsuariosAjax'])->name('verUsuariosAjax');
         Route::get('/create', [App\Http\Controllers\Admin\Gimnasio\CreateController::class,'create'])->name('create');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\Gimnasio\EditController::class,'edit'])->name('edit');
         Route::get('/show/{id}', [App\Http\Controllers\Admin\Gimnasio\ShowController::class,'show'])->name('show');

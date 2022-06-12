@@ -111,13 +111,33 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group row {{ $errors->has('gimnasios') ? 'has-error' : ''}}">
+        {{ Form::label('gimnasios', __('Gimnasios'), array('class' => 'col-sm-2 offset-sm-1 col-form-label') ) }}
+        <div class="row col-sm-8 col-md-8 col-lg-8">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                {{ Form::select('gimnasios[]', $litaGimnasios, isset($usuario->gimnasios) ? $usuario->gimnasios()->pluck('gimnasios.id') : null, ['class' => 'form-control select2','aria-hidden' => 'true', 'multiple' => 'multiple', 'id' => 'gimnasioMultiple']) }}
+                {!! $errors->first('gimnasios', '<p class="help-block" style="color:red;">:message *</p>') !!}
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="card-footer">
     <button type="submit" class="btn btn-dark float-right">{{ __('Aceptar') }}</button>
 </div>
 
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.1/css/bootstrap-multiselect.min.css" integrity="sha512-jpey1PaBfFBeEAsKxmkM1Yh7fkH09t/XDVjAgYGrq1s2L9qPD/kKdXC/2I6t2Va8xdd9SanwPYHIAnyBRdPmig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .multiselect-container {
+            width: 100% !important;
+        }
+    </style>
+@endpush
+
 @push('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.1/js/bootstrap-multiselect.min.js" integrity="sha512-fp+kGodOXYBIPyIXInWgdH2vTMiOfbLC9YqwEHslkUxc8JLI7eBL2UQ8/HbB5YehvynU3gA3klc84rAQcTQvXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function inputSize(){
             if($(window).width() < 575){
@@ -130,6 +150,17 @@
                 $('#apellido2, #telefono, #cod_postal,#altura, #peso,#tipo,#repetir_password').css('margin-top','auto');
             }
         }
+
+        $('#gimnasioMultiple').multiselect({
+            nonSelectedText: '{{('Selecciona')}}',
+            filterPlaceholder: '{{('Buscar')}}',
+            selectAllText: '{{__('Seleccionar todos')}}',
+            allSelectedText: 'Todo seleccionado',
+            includeSelectAllOption: true,
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true,
+            buttonWidth: '100%'
+        });
 
         $(document).ready(function(){
             inputSize();

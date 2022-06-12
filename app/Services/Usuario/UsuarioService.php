@@ -41,23 +41,32 @@ class UsuarioService{
 
     public function store($datos){
         $datos['created_at'] = Carbon::now();
-
         $datos['password'] =  Hash::make($datos['password']);
 
-        return $this->usuarioRepository->store($datos);
+        $usuario = $this->usuarioRepository->store($datos);
+
+        if(isset($datos['gimnasios'])){
+            $usuario->gimnasios()->sync($datos['gimnasios']);
+        }
     }
 
     public function update($id, $datos){
         $usuario = $this->usuarioRepository->getById($id);
 
         $datos['password'] = $datos['password'] != null ? Hash::make($datos['password']) : $usuario->password;
-
         $datos['updated_at'] = Carbon::now();
 
-        return $this->usuarioRepository->update($usuario, $datos);
+        $this->usuarioRepository->update($usuario, $datos);
+        if(isset($datos['gimnasios'])){
+            $usuario->gimnasios()->sync($datos['gimnasios']);
+        }
+
+        return $usuario;
     }
 
     public function destroy($id){
+        $usuario = $this->usuarioRepository->getById($id);
+        $usuario->gimnasios()->detach();
         return $this->usuarioRepository->destroy($id);
     }
 
@@ -67,5 +76,9 @@ class UsuarioService{
 
     public function sexoUsuario(){
         return User::sexoEnArray();
+    }
+
+    public function usuarioEnGimnasios($idGimnasio){
+        return $this->usuarioRepository->usuarioEnGimnasios($idGimnasio);
     }
 }

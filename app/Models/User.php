@@ -71,4 +71,8 @@ class User extends Authenticatable
             User::USUARIO_MUJER => __('Mujer')
         ];
     }
+
+    public function gimnasios(){
+        return $this->belongsToMany(Gimnasio::class, 'usuarios_gimnasios', 'usuario_id', 'gimnasio_id');
+    }
 }

@@ -35,4 +35,8 @@ class Gimnasio extends Model
         'email',
         'telefono'
     ];
+
+    public function usuarios(){
+        return $this->belongsToMany(Usuario::class, 'usuarios_gimnasios', 'usuario_id', 'gimnasio_id');
+    }
 }

@@ -14,7 +14,7 @@ class UsuarioRepository{
     }
 
     public function store($usuario){
-        return User::insert($usuario);
+        return User::create($usuario);
     }
 
     public function update($usuario, $datos){
@@ -23,5 +23,11 @@ class UsuarioRepository{
 
     public function destroy($id){
         return User::destroy($id);
+    }
+
+    public function usuarioEnGimnasios($idGimnasio){
+        return User::join('usuarios_gimnasios','usuarios_gimnasios.usuario_id','users.id')->
+            where('usuarios_gimnasios.gimnasio_id',$idGimnasio)->
+            get();
     }
 }

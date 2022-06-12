@@ -22,11 +22,4 @@ class ArbitroDisciplina extends Model
      * @var string
      */
     protected $primaryKey = 'id';
-
-    public function disciplinas(){
-        return $this->hasOne(Disciplina::class, 'id', 'disciplina_id');
-    }
-    public function arbitros(){
-        return $this->hasOne(Arbitro::class, 'id', 'arbitro_id');
-    }
 }

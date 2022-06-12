@@ -19,7 +19,7 @@ class CreateUsuarioGimnasiosTable extends Migration
             $table->unsignedBigInteger('gimnasio_id');
             $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('gimnasio_id')->references('id')->on('gimnasios');
-            $table->date('fecha_alta');
+            $table->date('fecha_alta')->nullable();
             $table->date('fecha_baja')->nullable();
             $table->timestamps();
         });
