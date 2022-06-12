@@ -92,10 +92,12 @@
                 {{ Form::text('usuario', isset($usuario->usuario) ? $usuario->usuario : "", array('class' => 'form-control', 'placeholder' => __('Nombre de la cuenta'), 'id' => 'usuario')) }}
                 {!! $errors->first('usuario', '<p class="help-block" style="color:red;">:message *</p>') !!}
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                {{ Form::select('tipo', $tiposUsuario, isset($usuario->tipo) ? $usuario->tipo : null, ['class' => 'form-control',"placeholder" => __('Selecciona el tipo de usuario'),'aria-hidden' => 'true','id' => 'tipo' ]) }}
-                {!! $errors->first('tipo', '<p class="help-block" style="color:red;">:message *</p>') !!}
-            </div>
+            @if(!isset($usuario) || \Auth::user()->id != $usuario->id)
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    {{ Form::select('tipo', $tiposUsuario, isset($usuario->tipo) ? $usuario->tipo : null, ['class' => 'form-control',"placeholder" => __('Selecciona el tipo de usuario'),'aria-hidden' => 'true','id' => 'tipo' ]) }}
+                    {!! $errors->first('tipo', '<p class="help-block" style="color:red;">:message *</p>') !!}
+                </div>
+            @endif
         </div>
     </div>
 
