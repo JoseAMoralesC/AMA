@@ -244,7 +244,7 @@
             }]
         };
 
-        let maxDataValue = Math.max(...{{ $registrosPorMeses }}) + 50;
+        let maxDataValue = Math.max(...{{ $registrosPorMeses }}) + 9;
 
         const config = {
             type: 'line',
