@@ -39,7 +39,15 @@ class GimnasioService{
     public function store($datos){
         $datos['created_at'] = Carbon::now();
 
-        return $this->gimnasioRepository->store($datos);
+        $gimnasio = $this->gimnasioRepository->store($datos);
+        if(isset($datos['disciplinas'])){
+            $gimnasio->disciplinas()->sync($datos['disciplinas']);
+        }
+        if(isset($datos['federaciones'])){
+            $gimnasio->federaciones()->sync($datos['federaciones']);
+        }
+
+        return $gimnasio;
     }
 
     public function update($id, $datos){
@@ -47,10 +55,22 @@ class GimnasioService{
 
         $datos['updated_at'] = Carbon::now();
 
-        return $this->gimnasioRepository->update($gimnasio, $datos);
+        $this->gimnasioRepository->update($gimnasio, $datos);
+        if(isset($datos['disciplinas'])){
+            $gimnasio->disciplinas()->sync($datos['disciplinas']);
+        }
+        if(isset($datos['federaciones'])){
+            $gimnasio->federaciones()->sync($datos['federaciones']);
+        }
+
+        return $gimnasio;
     }
 
     public function destroy($id){
+        $gimnasio = $this->gimnasioRepository->getById($id);
+        $gimnasio->disciplinas()->detach();
+        $gimnasio->federaciones()->detach();
+
         return $this->gimnasioRepository->destroy($id);
     }
 

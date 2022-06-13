@@ -28,4 +28,8 @@ class FederacionRepository{
     public function totalRegistros(){
         return Federacion::all()->count();
     }
+
+    public function federacionesSelect(){
+        return Federacion::all()->pluck('nombre','id');
+    }
 }

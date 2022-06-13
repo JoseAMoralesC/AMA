@@ -35,11 +35,15 @@ class Campeonato extends Model
         'fecha_fin',
         'hora_ini',
         'hora_fin',
-        'descripcion'
+        'descripcion',
+        'reglamento_id'
     ];
 
     public function reglamentos(){
         return $this->hasOne(Reglamento::class, 'id', 'reglamento_id');
     }
 
+    public function arbitros(){
+        return $this->belongsToMany(Arbitro::class, 'campeonatos_arbitros', 'campeonato_id', 'arbitro_id');
+    }
 }

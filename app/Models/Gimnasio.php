@@ -37,6 +37,14 @@ class Gimnasio extends Model
     ];
 
     public function usuarios(){
-        return $this->belongsToMany(Usuario::class, 'usuarios_gimnasios', 'usuario_id', 'gimnasio_id');
+        return $this->belongsToMany(Usuario::class, 'usuarios_gimnasios', 'gimnasio_id','usuario_id');
+    }
+
+    public function disciplinas(){
+        return $this->belongsToMany(Disciplina::class, 'gimnasios_disciplinas', 'gimnasio_id','disciplina_id');
+    }
+
+    public function federaciones(){
+        return $this->belongsToMany(Federacion::class, 'gimnasios_federaciones', 'gimnasio_id','federacion_id');
     }
 }

@@ -76,4 +76,8 @@ class ArbitroService{
     public function disciplinasSelect(){
         return $this->disciplinaRepository->disciplinasParaLosSelect();
     }
+
+    public function arbitrosSelect(){
+        return $this->arbitroRepository->arbitrosSelect();
+    }
 }

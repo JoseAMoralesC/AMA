@@ -19,7 +19,7 @@ class CreateGimnasioFederacionsTable extends Migration
             $table->unsignedBigInteger('federacion_id');
             $table->foreign('gimnasio_id')->references('id')->on('gimnasios');
             $table->foreign('federacion_id')->references('id')->on('federaciones');
-            $table->date('fecha_alta');
+            $table->date('fecha_alta')->nullable();
             $table->date('fecha_baja')->nullable();
             $table->boolean('activa')->default(true);
             $table->timestamps();

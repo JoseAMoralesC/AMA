@@ -47,4 +47,8 @@ class FederacionService{
     public function destroy($id){
         return $this->federacionRepository->destroy($id);
     }
+
+    public function federacionesSelect(){
+        return $this->federacionRepository->federacionesSelect();
+    }
 }

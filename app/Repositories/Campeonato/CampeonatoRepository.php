@@ -14,7 +14,7 @@ class CampeonatoRepository{
     }
 
     public function store($campeonato){
-        return Campeonato::insert($campeonato);
+        return Campeonato::create($campeonato);
     }
 
     public function update($campeonato, $datos){

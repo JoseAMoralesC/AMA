@@ -14,7 +14,7 @@ class GimnasioRepository{
     }
 
     public function store($gimnasio){
-        return Gimnasio::insert($gimnasio);
+        return Gimnasio::create($gimnasio);
     }
 
     public function update($gimnasio, $datos){

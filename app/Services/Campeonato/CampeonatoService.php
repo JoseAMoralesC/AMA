@@ -38,18 +38,28 @@ class CampeonatoService{
     public function store($datos){
         $datos['created_at'] = Carbon::now();
 
-        return $this->campeonatoRepository->store($datos);
+        $campeonato = $this->campeonatoRepository->store($datos);
+        if(isset($datos['arbitros'])){
+            $campeonato->arbitros()->sync($datos['arbitros']);
+        }
     }
 
     public function update($id, $datos){
-        $gimnasio = $this->campeonatoRepository->getById($id);
+        $campeonato = $this->campeonatoRepository->getById($id);
 
         $datos['updated_at'] = Carbon::now();
 
-        return $this->campeonatoRepository->update($gimnasio, $datos);
+        $this->campeonatoRepository->update($campeonato, $datos);
+        if(isset($datos['arbitros'])) {
+            $campeonato->arbitros()->sync($datos['arbitros']);
+        }
+
+        return $campeonato;
     }
 
     public function destroy($id){
+        $campeonato = $this->campeonatoRepository->getById($id);
+        $campeonato->arbitros()->detach();
         return $this->campeonatoRepository->destroy($id);
     }
 

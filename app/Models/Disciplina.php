@@ -33,6 +33,6 @@ class Disciplina extends Model
     ];
 
     public function arbitros(){
-        return $this->belongsToMany(Arbitro::class, 'arbitros_disciplinas', 'arbitro_id', 'disciplina_id');
+        return $this->belongsToMany(Arbitro::class, 'arbitros_disciplinas','disciplina_id','arbitro_id');
     }
 }
