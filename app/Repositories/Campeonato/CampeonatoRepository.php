@@ -24,8 +24,4 @@ class CampeonatoRepository{
     public function destroy($id){
         return Campeonato::destroy($id);
     }
-
-    public function disciplinasParaLosSelect(){
-        return Campeonato::all()->pluck('nombre','id');
-    }
 }

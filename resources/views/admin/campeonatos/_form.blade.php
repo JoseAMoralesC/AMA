@@ -42,6 +42,16 @@
         </div>
     </div>
 
+    <div class="form-group row {{ $errors->has('reglamento_id') ? 'has-error' : ''}}">
+        {{ Form::label('reglamento_id', __('Reglamento'), array('class' => 'col-sm-2 offset-sm-1 col-form-label') ) }}
+        <div class="row col-sm-8 col-md-8 col-lg-8">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                {{ Form::select('reglamento_id', $reglamentos, isset($campeonato->reglamento_id) ? $campeonato->reglamento_id : null, ['class' => 'form-control select2','aria-hidden' => 'true', 'id' => 'reglamento_id', 'placeholder' => __('Selecciona un reglamento')]) }}
+                {!! $errors->first('reglamento_id', '<p class="help-block" style="color:red;">:message *</p>') !!}
+            </div>
+        </div>
+    </div>
+
     <div class="form-group row {{ $errors->has('descripcion') ? 'has-error' : ''}}">
         {{ Form::label('descripcion', __('Descripcion'), array('class' => 'col-sm-2 offset-sm-1 col-form-label') ) }}
         <div class="col-sm-8 col-md-8 col-lg-8">

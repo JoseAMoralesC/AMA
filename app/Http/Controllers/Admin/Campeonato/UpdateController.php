@@ -22,6 +22,7 @@ class UpdateController extends Controller
             'fecha_ini' => 'required|date',
             'hora_ini' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i',
+            'reglamento_id' => 'required'
         ],
         [
             'nombre.required' => __('El nombre del campeonato es obligatorio'),
@@ -32,6 +33,7 @@ class UpdateController extends Controller
             'hora_ini.date_format' => __('La hora de inicio tiene que ser una hora'),
             'hora_fin.required' => __('La hora de finalizacion es obligatoria'),
             'hora_fin.date_format' => __('La hora de finalizacion tiene que ser una hora'),
+            'reglamento_id.required' => __('El campeonato necesita un reglamento.')
         ]);
 
         $dataRequest = $request->except('_token');

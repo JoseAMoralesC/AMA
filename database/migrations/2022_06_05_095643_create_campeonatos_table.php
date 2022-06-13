@@ -22,6 +22,8 @@ class CreateCampeonatosTable extends Migration
             $table->time('hora_ini');
             $table->time('hora_fin')->nullable();
             $table->string('descripcion')->nullable();
+            $table->unsignedBigInteger('reglamento_id');
+            $table->foreign('reglamento_id')->references('id')->on('reglamentos');
             $table->timestamps();
         });
     }

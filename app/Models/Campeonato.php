@@ -37,4 +37,9 @@ class Campeonato extends Model
         'hora_fin',
         'descripcion'
     ];
+
+    public function reglamentos(){
+        return $this->hasOne(Reglamento::class, 'id', 'reglamento_id');
+    }
+
 }

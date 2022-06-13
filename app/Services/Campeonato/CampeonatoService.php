@@ -17,15 +17,14 @@ class CampeonatoService{
     public function mountDataIndex(){
         $datosDatatables = [];
 
-
         foreach($this->campeonatoRepository->index() as $campeonato){
             $datosDatatables[] = [
                 'id' => $campeonato->id,
                 'nombre' => $campeonato->nombre,
-                'direccion' => $campeonato->direccin,
+                'direccion' => $campeonato->direccion,
                 'fecha' => $campeonato->fecha_fin != null ? 'Desde '.Carbon::parse($campeonato->fecha_ini)->format('d M Y').' hasta '.Carbon::parse($campeonato->fecha_fin)->format('d M Y') : 'El '.Carbon::parse($campeonato->fecha_ini)->format('d M Y'),
                 'hora' => 'De '.Carbon::parse($campeonato->hora_ini)->format('H:i').' hasta '.Carbon::parse($campeonato->hora_fin)->format('H:i'),
-                'descripcion' => $campeonato->descripcion,
+                'reglamento' => $campeonato->reglamentos->nombre,
             ];
         }
 

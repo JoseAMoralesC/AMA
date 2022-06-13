@@ -47,4 +47,8 @@ class ReglamentoService{
     public function destroy($id){
         return $this->reglamentoRepository->destroy($id);
     }
+
+    public function reglamentosSelect(){
+        return $this->reglamentoRepository->reglamentosSelect();
+    }
 }

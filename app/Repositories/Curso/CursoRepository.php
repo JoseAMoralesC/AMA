@@ -34,8 +34,4 @@ class CursoRepository{
     public function destroy($id){
         return Curso::destroy($id);
     }
-
-    public function disciplinasParaLosSelect(){
-        return Curso::all()->pluck('nombre','id');
-    }
 }

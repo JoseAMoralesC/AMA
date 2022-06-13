@@ -27,7 +27,7 @@
                         <th class="text-center">{{__('Direccion')}}</th>
                         <th class="text-center">{{__('Fecha')}}</th>
                         <th class="text-center">{{__('Hora')}}</th>
-                        <th class="text-center">{{__('Descripcion')}}</th>
+                        <th class="text-center">{{__('Reglamento')}}</th>
                         <th class="text-center" width="140px">{{__('Acciones')}}</th>
                     </thead>
                     <tbody></tbody>
@@ -59,7 +59,7 @@
                 {data: 'direccion', 'className': 'text-center'},
                 {data: 'fecha', 'className': 'text-center'},
                 {data: 'hora', 'className': 'text-center'},
-                {data: 'descripcion', 'className': 'text-center'},
+                {data: 'reglamento', 'className': 'text-center'},
                 {data: null,'className': 'text-center',
                     render: function(data,type,row,meta){
                         let url;

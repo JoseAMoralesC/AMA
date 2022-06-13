@@ -25,7 +25,7 @@ class ReglamentoRepository{
         return Reglamento::destroy($id);
     }
 
-    public function disciplinasParaLosSelect(){
+    public function reglamentosSelect(){
         return Reglamento::all()->pluck('nombre','id');
     }
 }
