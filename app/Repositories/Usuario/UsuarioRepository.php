@@ -38,6 +38,6 @@ class UsuarioRepository{
     }
 
     public function registroPorMeses(){
-        return User::query()->select(DB::raw('COUNT(id) as total, Month(created_at) as mes'))->groupBy(DB::raw('Month(created_at)'))->get();
+        return User::query()->select(DB::raw('COUNT(id) as total, Month(created_at) as mes'))->whereYear('created_at',date('Y'))->groupBy(DB::raw('Month(created_at)'))->get();
     }
 }

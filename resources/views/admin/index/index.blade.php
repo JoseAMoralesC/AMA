@@ -244,10 +244,19 @@
             }]
         };
 
+        let maxDataValue = Math.max(...{{ $registrosPorMeses }}) + 50;
+
         const config = {
             type: 'line',
             data: data,
-            options: {}
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        suggestedMax: maxDataValue
+                    }
+                }
+            }
         };
 
         const myChart = new Chart(
