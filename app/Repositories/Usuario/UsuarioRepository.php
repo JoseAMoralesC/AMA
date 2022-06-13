@@ -4,6 +4,7 @@ namespace App\Repositories\Usuario;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioRepository{
     public function getById($id){
@@ -34,5 +35,9 @@ class UsuarioRepository{
 
     public function totalRegistros(){
         return User::all()->where('tipo', User::USUARIO_NORMAL)->where('activo',true)->count();
+    }
+
+    public function registroPorMeses(){
+        return User::query()->select(DB::raw('COUNT(id) as total, Month(created_at) as mes'))->groupBy(DB::raw('Month(created_at)'))->get();
     }
 }

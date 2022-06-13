@@ -12,6 +12,30 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12">
+                    <div class="card card-dark">
+                        <div class="card-header">
+                            <h3 class="card-title">{{ __('Registros') }}</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="small-box bg-dark">
                         <div class="inner">
@@ -192,9 +216,44 @@
 @stop
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     $(document).ready(function(){
+        const labels = [
+            '{{ __('Enero') }}',
+            '{{ __('Febrero') }}',
+            '{{ __('Marzo') }}',
+            '{{ __('Abril') }}',
+            '{{ __('Mayo') }}',
+            '{{ __('Junio') }}',
+            '{{ __('Julio') }}',
+            '{{ __('Agosto') }}',
+            '{{ __('Septiembre') }}',
+            '{{ __('Octubre') }}',
+            '{{ __('Noviembre') }}',
+            '{{ __('Diciembre') }}',
+        ];
 
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: '{{ __('Registro de usuarios (').date('Y').')' }}',
+                backgroundColor: 'rgb(220, 53, 69)',
+                borderColor: 'rgb(220, 53, 69)',
+                data: {{ $registrosPorMeses }},
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('lineChart'),
+            config
+        );
     });
 </script>
 @stop

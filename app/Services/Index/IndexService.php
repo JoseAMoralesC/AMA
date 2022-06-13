@@ -15,6 +15,7 @@ use App\Repositories\Curso\CursoRepository;
 use App\Repositories\Producto\ProductoRepository;
 use App\Repositories\Marca\MarcaRepository;
 use App\Repositories\Categoria\CategoriaRepository;
+use Illuminate\Support\Arr;
 
 class IndexService{
 
@@ -80,6 +81,22 @@ class IndexService{
 
     public function numUsuarios(){
         return $this->usuarioRepository->totalRegistros();
+    }
+
+    public function registrosPorMeses(){
+        $registros =  $this->usuarioRepository->registroPorMeses();
+
+        $montarRegistros = [];
+        for($i = 1; $i <= 12; $i++){
+            $montarRegistros[] = 0;
+            for($x = 0; $x < count($registros); $x++){
+                if($registros[$x]['mes'] == $i && $montarRegistros[$i-1] == 0){
+                    $montarRegistros[$i-1] = [$registros[$x]['total']];
+                }
+            }
+        }
+
+        return json_encode(Arr::flatten($montarRegistros));
     }
 
     public function numCuotas(){

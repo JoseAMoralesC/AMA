@@ -20,6 +20,7 @@ class IndexController extends Controller
             'numFederaciones' => $this->indexService->numFederaciones(),
             'numReglamentos' => $this->indexService->numReglamentos(),
             'numUsuarios' => $this->indexService->numUsuarios(),
+            'registrosPorMeses' => $this->indexService->registrosPorMeses(),
             'numCuotas' => $this->indexService->numCuotas(),
             'numCampeonatos' => $this->indexService->numCampeonatos(),
             'numArbitros' => $this->indexService->numArbitros(),
