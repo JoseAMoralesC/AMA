@@ -28,4 +28,8 @@ class DisciplinaRepository{
     public function disciplinasParaLosSelect(){
         return Disciplina::all()->pluck('nombre','id');
     }
+
+    public function numDisciplinas(){
+        return Disciplina::all()->count();
+    }
 }

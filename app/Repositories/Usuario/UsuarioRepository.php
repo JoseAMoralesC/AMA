@@ -31,4 +31,8 @@ class UsuarioRepository{
             where('usuarios_gimnasios.gimnasio_id',$idGimnasio)->
             get();
     }
+
+    public function totalRegistros(){
+        return User::all()->where('tipo', User::USUARIO_NORMAL)->where('activo',true)->count();
+    }
 }

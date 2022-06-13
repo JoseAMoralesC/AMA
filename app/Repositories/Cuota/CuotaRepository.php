@@ -24,4 +24,8 @@ class CuotaRepository{
     public function destroy($id){
         return Cuota::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Cuota::all()->count();
+    }
 }

@@ -24,4 +24,8 @@ class FederacionRepository{
     public function destroy($id){
         return Federacion::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Federacion::all()->count();
+    }
 }

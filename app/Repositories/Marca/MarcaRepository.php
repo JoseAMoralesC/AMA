@@ -28,4 +28,8 @@ class MarcaRepository{
     public function marcasSelect(){
         return Marca::all()->pluck('nombre','id');
     }
+
+    public function totalRegistros(){
+        return Marca::all()->count();
+    }
 }

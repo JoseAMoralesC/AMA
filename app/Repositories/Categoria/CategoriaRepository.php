@@ -28,4 +28,8 @@ class CategoriaRepository{
     public function categoriasSelect(){
         return Categoria::all()->pluck('nombre','id');
     }
+
+    public function totalRegistros(){
+        return Categoria::all()->count();
+    }
 }

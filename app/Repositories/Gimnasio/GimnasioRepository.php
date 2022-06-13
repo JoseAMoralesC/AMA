@@ -28,4 +28,8 @@ class GimnasioRepository{
     public function gimnasiosSelect(){
         return Gimnasio::all()->pluck('nombre','id');
     }
+
+    public function totalRegistros(){
+        return Gimnasio::all()->count();
+    }
 }

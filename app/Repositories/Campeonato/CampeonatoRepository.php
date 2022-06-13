@@ -24,4 +24,8 @@ class CampeonatoRepository{
     public function destroy($id){
         return Campeonato::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Campeonato::all()->count();
+    }
 }

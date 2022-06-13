@@ -27,4 +27,8 @@ class EstiloRepository{
     public function destroy($id){
         return Estilo::destroy($id);
     }
+
+    public function numEstilos(){
+        return Estilo::all()->count();
+    }
 }

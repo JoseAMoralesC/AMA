@@ -34,4 +34,8 @@ class CursoRepository{
     public function destroy($id){
         return Curso::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Curso::all()->count();
+    }
 }

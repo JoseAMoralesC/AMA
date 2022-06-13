@@ -28,4 +28,8 @@ class ReglamentoRepository{
     public function reglamentosSelect(){
         return Reglamento::all()->pluck('nombre','id');
     }
+
+    public function totalRegistros(){
+        return Reglamento::all()->count();
+    }
 }

@@ -34,4 +34,8 @@ class ProductoRepository{
     public function destroy($id){
         return Producto::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Producto::all()->count();
+    }
 }

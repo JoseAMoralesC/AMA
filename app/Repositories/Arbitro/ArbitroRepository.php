@@ -24,4 +24,8 @@ class ArbitroRepository{
     public function destroy($id){
         return Arbitro::destroy($id);
     }
+
+    public function totalRegistros(){
+        return Arbitro::all()->count();
+    }
 }
