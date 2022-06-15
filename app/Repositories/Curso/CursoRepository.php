@@ -3,6 +3,8 @@
 namespace App\Repositories\Curso;
 
 use App\Models\Curso;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CursoRepository{
     public function getById($id){
@@ -37,5 +39,29 @@ class CursoRepository{
 
     public function totalRegistros(){
         return Curso::all()->count();
+    }
+
+    //USUARIOS NORMALES
+    public function numMisCursosDisponibles(){
+        return Curso::join('gimnasios','cursos.gimnasio_id','gimnasios.id')->
+            whereDate('cursos.fecha_ini', '>',Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->count();
+    }
+
+    public function verCursosDisponiblesUsuario(){
+        return Curso::select(
+                'cursos.nombre as nombreCurso',
+                'cursos.precio as precioCurso',
+                'cursos.fecha_ini as fecha_iniCurso',
+                'cursos.fecha_fin as fecha_finCurso',
+                'cursos.hora_ini as hora_iniCurso',
+                'cursos.hora_fin as hora_finCurso',
+                'gimnasios.nombre as nombreGimnasio',
+                'gimnasios.direccion as direccionGimnasio',
+                'gimnasios.cod_postal as cod_postalGimnasio',
+                'gimnasios.telefono as telefonoGimnasio',
+                'gimnasios.email as emailGimnasio'
+            )->
+            join('gimnasios','cursos.gimnasio_id','gimnasios.id')->
+            whereDate('cursos.fecha_ini', '>',Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->get();
     }
 }

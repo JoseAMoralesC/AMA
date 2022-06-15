@@ -34,7 +34,7 @@ class CuotaService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $datos['precio'] =  round($datos['precio'],2);
 
@@ -42,7 +42,7 @@ class CuotaService{
     }
 
     public function update($id, $datos){
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
         $usuario = $this->cuotaRepository->getById($id);
 
         $datos['precio'] =  round($datos['precio'],2);

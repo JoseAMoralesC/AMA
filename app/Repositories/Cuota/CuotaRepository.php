@@ -3,6 +3,9 @@
 namespace App\Repositories\Cuota;
 
 use App\Models\Cuota;
+use App\Models\UsuarioCuota;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CuotaRepository{
     public function getById($id){
@@ -27,5 +30,11 @@ class CuotaRepository{
 
     public function totalRegistros(){
         return Cuota::all()->count();
+    }
+
+    //USUARIOS NORMALES
+    public function estadoCuotaUsuario(){
+        return UsuarioCuota::query()->whereDate('fecha_fin', '>',Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->
+            where('usuario_id',Auth::user()->id)->count();
     }
 }

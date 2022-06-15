@@ -32,7 +32,7 @@ class EstiloService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->estiloRepository->store($datos);
     }
@@ -40,7 +40,7 @@ class EstiloService{
     public function update($id, $datos){
         $disciplina = $this->estiloRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->estiloRepository->update($disciplina, $datos);
     }

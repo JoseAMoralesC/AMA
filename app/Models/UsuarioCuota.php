@@ -30,6 +30,7 @@ class UsuarioCuota extends Model
      */
     protected $fillable = [
         'usuario_id',
-        'cuota_id'
+        'cuota_id',
+        'fecha_fin'
     ];
 }

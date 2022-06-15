@@ -37,7 +37,7 @@ class ProductoService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->productoRepository->store($datos);
     }
@@ -45,7 +45,7 @@ class ProductoService{
     public function update($id, $datos){
         $marca = $this->productoRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->productoRepository->update($marca, $datos);
     }

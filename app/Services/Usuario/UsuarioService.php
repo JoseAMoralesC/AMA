@@ -41,7 +41,7 @@ class UsuarioService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
         $datos['password'] =  Hash::make($datos['password']);
 
         $usuario = $this->usuarioRepository->store($datos);
@@ -55,7 +55,7 @@ class UsuarioService{
         $usuario = $this->usuarioRepository->getById($id);
 
         $datos['password'] = $datos['password'] != null ? Hash::make($datos['password']) : $usuario->password;
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         if(Auth::user()->id == $id){
             $datos['tipo'] = $usuario->tipo;

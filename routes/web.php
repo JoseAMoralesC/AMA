@@ -182,6 +182,23 @@ Route::middleware(['auth.admin'])->name('admin.')->prefix('/admin')->group(funct
 
 Route::middleware(['auth.normal'])->name('usuario.')->prefix('/usuario')->group(function () {
     Route::get('', [App\Http\Controllers\Normal\Index\IndexController::class,'index'])->name('index');
+
+    //AAMM
+    Route::prefix('/aamm/')->name('aamm.')->group(function(){
+        Route::get('', [App\Http\Controllers\Normal\AAMM\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Normal\AAMM\IndexController::class,'indexAjax'])->name('indexAjax');
+    });
+
+    //CURSOS
+    Route::prefix('/cursos/')->name('cursos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Normal\Curso\IndexController::class,'index'])->name('index');
+    });
+
+    //PERFIL
+    Route::prefix('perfil/')->name('perfil.')->group(function(){
+        Route::get('/edit', [App\Http\Controllers\Normal\Perfil\EditController::class,'edit'])->name('edit');
+        Route::put('/update/{id}', [App\Http\Controllers\Normal\Perfil\UpdateController::class,'update'])->name('update');
+    });
 });
 
 //TIENDA

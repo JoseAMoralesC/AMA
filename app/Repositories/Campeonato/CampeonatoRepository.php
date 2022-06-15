@@ -3,6 +3,7 @@
 namespace App\Repositories\Campeonato;
 
 use App\Models\Campeonato;
+use Carbon\Carbon;
 
 class CampeonatoRepository{
     public function getById($id){
@@ -27,5 +28,9 @@ class CampeonatoRepository{
 
     public function totalRegistros(){
         return Campeonato::all()->count();
+    }
+
+    public function numCampeonatosDisponibles(){
+        return Campeonato::query()->whereDate('fecha_ini', '>', Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->count();
     }
 }

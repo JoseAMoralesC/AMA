@@ -36,7 +36,7 @@ class CampeonatoService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $campeonato = $this->campeonatoRepository->store($datos);
         if(isset($datos['arbitros'])){
@@ -47,7 +47,7 @@ class CampeonatoService{
     public function update($id, $datos){
         $campeonato = $this->campeonatoRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $this->campeonatoRepository->update($campeonato, $datos);
         if(isset($datos['arbitros'])) {

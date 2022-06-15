@@ -144,20 +144,7 @@ class AppServiceProvider extends ServiceProvider
                     [
                         'text'    => __('Artes Marciales'),
                         'icon'    => 'fas fa-fw fa-child',
-                        'submenu' => [
-                            [
-                                'text' => 'Disciplinas',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Federaciones',
-                                'url'  => '#',
-                            ],
-                            [
-                                'text' => 'Reglamentos',
-                                'url'  => '#',
-                            ],
-                        ],
+                        'url'  => '/usuario/aamm',
                     ],
                     [
                         'text'    => 'Gimnasio',

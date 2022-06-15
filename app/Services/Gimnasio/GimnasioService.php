@@ -37,7 +37,7 @@ class GimnasioService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $gimnasio = $this->gimnasioRepository->store($datos);
         if(isset($datos['disciplinas'])){
@@ -53,7 +53,7 @@ class GimnasioService{
     public function update($id, $datos){
         $gimnasio = $this->gimnasioRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $this->gimnasioRepository->update($gimnasio, $datos);
         if(isset($datos['disciplinas'])){

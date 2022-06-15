@@ -5,6 +5,7 @@ namespace App\Services\Curso;
 use App\Repositories\Curso\CursoRepository;
 use App\Services\Gimnasio\GimnasioService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 
 class CursoService{
@@ -46,6 +47,7 @@ class CursoService{
         $datos['created_at'] = Carbon::now();
 
         $datos['precio'] =  round($datos['precio'],2);
+        $datos['fecha_fin'] = $datos['fecha_fin'] != null ? $datos['fecha_fin'] : $datos['fecha_ini'];
 
         return $this->cursoRepository->store($datos);
     }
@@ -55,6 +57,7 @@ class CursoService{
 
         $datos['updated_at'] = Carbon::now();
         $datos['precio'] =  round($datos['precio'],2);
+        $datos['fecha_fin'] = $datos['fecha_fin'] != null ? $datos['fecha_fin'] : $datos['fecha_ini'];
 
         return $this->cursoRepository->update($curso, $datos);
     }

@@ -31,7 +31,7 @@ class FederacionService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->federacionRepository->store($datos);
     }
@@ -39,7 +39,7 @@ class FederacionService{
     public function update($id, $datos){
         $disciplina = $this->federacionRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->federacionRepository->update($disciplina, $datos);
     }

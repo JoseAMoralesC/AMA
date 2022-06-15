@@ -34,7 +34,7 @@ class MarcaService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->marcaRepository->store($datos);
     }
@@ -42,7 +42,7 @@ class MarcaService{
     public function update($id, $datos){
         $marca = $this->marcaRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->marcaRepository->update($marca, $datos);
     }

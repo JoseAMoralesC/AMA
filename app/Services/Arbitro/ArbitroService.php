@@ -40,7 +40,7 @@ class ArbitroService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $arbitro = $this->arbitroRepository->store($datos);
 
@@ -54,7 +54,7 @@ class ArbitroService{
     public function update($id, $datos){
         $arbitro = $this->arbitroRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         $this->arbitroRepository->update($arbitro, $datos);
         if (isset($datos['disciplina'])) {

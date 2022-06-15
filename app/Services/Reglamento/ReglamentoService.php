@@ -31,7 +31,7 @@ class ReglamentoService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->reglamentoRepository->store($datos);
     }
@@ -39,7 +39,7 @@ class ReglamentoService{
     public function update($id, $datos){
         $disciplina = $this->reglamentoRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->reglamentoRepository->update($disciplina, $datos);
     }

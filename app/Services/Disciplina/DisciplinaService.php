@@ -26,12 +26,25 @@ class DisciplinaService{
         return $datosDatatables;
     }
 
+    public function datosIndexUsuario(){
+        $datos = [];
+
+        foreach($this->disciplinaRepository->verDisciplinasUsuario() as $disciplina){
+            $datos[] = [
+                'id' => $disciplina->id,
+                'disciplina' => $disciplina->nombre
+            ];
+        }
+
+        return $datos;
+    }
+
     public function getById($id){
         return $this->disciplinaRepository->getById($id);
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->disciplinaRepository->store($datos);
     }
@@ -39,7 +52,7 @@ class DisciplinaService{
     public function update($id, $datos){
         $disciplina = $this->disciplinaRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->disciplinaRepository->update($disciplina, $datos);
     }

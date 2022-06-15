@@ -33,7 +33,7 @@ class CategoriaService{
     }
 
     public function store($datos){
-        $datos['created_at'] = Carbon::now();
+        $datos['created_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->categoriaRepository->store($datos);
     }
@@ -41,7 +41,7 @@ class CategoriaService{
     public function update($id, $datos){
         $categoria = $this->categoriaRepository->getById($id);
 
-        $datos['updated_at'] = Carbon::now();
+        $datos['updated_at'] = Carbon::now()->timezone('Europe/Madrid');
 
         return $this->categoriaRepository->update($categoria, $datos);
     }
