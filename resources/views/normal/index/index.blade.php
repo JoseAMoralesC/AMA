@@ -6,10 +6,9 @@
     <h1>{{ __('Inicio') }}</h1>
 @stop
 @section('content')
+    @include('flash-message')
     <section class="content">
         <div class="container-fluid">
-
-
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="small-box bg-dark">
@@ -33,7 +32,7 @@
                         <div class="icon">
                             <i class="fas fa-university text-light"></i>
                         </div>
-                        <a href="{{ route('usuario.aamm.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('usuario.gimnasios.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -75,7 +74,7 @@
                         <div class="icon">
                             <i class="fas fa-credit-card text-light"></i>
                         </div>
-                        <a href="{{ route('admin.cuotas.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -88,7 +87,7 @@
                         <div class="icon">
                             <i class="fas fa-trophy text-light"></i>
                         </div>
-                        <a href="{{ route('admin.campeonatos.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('usuario.campeonatos.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -101,7 +100,7 @@
                         <div class="icon">
                             <i class="fas fa-shopping-cart text-light"></i>
                         </div>
-                        <a href="{{ route('admin.arbitros.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('tienda.index') }}" class="small-box-footer">{{ __('Ir ') }}<i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

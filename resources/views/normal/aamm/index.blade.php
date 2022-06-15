@@ -24,15 +24,12 @@
                     <thead>
                         <th class="text-center" width="50px">#</th>
                         <th class="text-center">{{__('Nombre')}}</th>
-                        <th class="text-center" width="140px">{{__('Acciones')}}</th>
                     </thead>
                     <tbody></tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    @include('admin.usuarios.modales._delete')
 @stop
 
 @section('js')
@@ -52,18 +49,6 @@
             "columns": [
                 {data: 'id', 'className': 'text-center'},
                 {data: 'disciplina', 'className': 'text-center'},
-                {data: null,'className': 'text-center',
-                    render: function(data,type,row,meta){
-                        let url;
-                        let button = "";
-
-                        url = '{{ url('admin/usuarios/edit') }}/'+data.id;
-                        button += '<a href="'+url+'" class="btn btn-dark" title="{{__('Editar')}}"><i class="fa fa-edit"></i></a> '
-                        button += '<button type="button" id="'+data.id+'" class="btn btn-danger eliminar-usuario" title="{{__('Eliminar')}}" data-toggle="modal" data-target="#modalEliminar"><i class="fa fa-trash"></i></button>'
-
-                        return button;
-                    }
-                },
             ],
             "oLanguage": {
                 "sProcessing": "{{__('Procesando...')}}",
@@ -97,12 +82,6 @@
     }
     $(document).ready(function(){
         montarTabla();
-
-        $('#datatable-usuarios tbody').on('click', '.eliminar-usuario', function () {
-            let id = $(this).attr('id');
-            let url = "{{ url('/admin/usuarios/destroy') }}/" + id;
-            $('#formularioEliminarUsuario').attr('action', url);
-        });
     });
 </script>
 @stop

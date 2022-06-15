@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('Gimnasios'))
+@section('title', __('Campeonatos'))
 
 @section('content_header')
-    <h1>{{ __('Mis gimnasios') }}</h1>
+    <h1>{{ __('Campeonatos') }}</h1>
 @stop
 @section('content')
     <div class="card card-outline card-danger">
@@ -20,12 +20,12 @@
             @include('flash-message')
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="datatable-gimnasios" style="width:100%">
+                <table class="table table-bordered table-striped" id="datatable-campeonatos" style="width:100%">
                     <thead>
                         <th class="text-center">{{__('Nombre')}}</th>
                         <th class="text-center">{{__('Direccion')}}</th>
-                        <th class="text-center">{{__('Telefono')}}</th>
-                        <th class="text-center">{{__('Email')}}</th>
+                        <th class="text-center">{{__('Fecha')}}</th>
+                        <th class="text-center">{{__('Reglamento')}}</th>
                     </thead>
                     <tbody></tbody>
                 </table>
@@ -38,7 +38,7 @@
 @section('js')
 <script>
     function montarTabla() {
-        return $('#datatable-gimnasios').DataTable({
+        return $('#datatable-campeonatos').DataTable({
             "order": [[0, "asc"]],
             "stateSave": true,
             "serverSide": true,
@@ -46,14 +46,14 @@
             "bJQueryUI": true,
             "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "{{__('Todos')}}"]],
             "ajax": {
-                url: "{{ route('usuario.gimnasios.indexAjax') }}",
+                url: "{{ route('usuario.campeonatos.indexAjax') }}",
                 method: "get",
             },
             "columns": [
                 {data: 'nombre', 'className': 'text-center'},
                 {data: 'direccion', 'className': 'text-center'},
-                {data: 'telefono', 'className': 'text-center'},
-                {data: 'email', 'className': 'text-center'},
+                {data: 'fecha', 'className': 'text-center'},
+                {data: 'reglamento', 'className': 'text-center'},
             ],
             "oLanguage": {
                 "sProcessing": "{{__('Procesando...')}}",

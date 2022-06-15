@@ -69,4 +69,25 @@ class CursoService{
     public function gimnasiosSelect(){
         return $this->gimnasioService->gimnasiosSelect();
     }
+
+    public function verCursosDisponiblesUsuario(){
+        $fecha = "";
+        $hora = "";
+        $datos = [];
+        foreach($this->cursoRepository->verCursosDisponiblesUsuario() as $curso){
+            $fecha = $curso->fecha_finCurso != null ? __('Desde ').Carbon::parse($curso->fecha_iniCurso)->format('d M Y').__(' hasta ').Carbon::parse($curso->fecha_finCurso)->format('d M Y') : 'El '.Carbon::parse($curso->fecha_iniCurso)->format('d M Y');
+            $hora = Carbon::parse($curso->hora_iniCurso)->format('H:i').' - '.Carbon::parse($curso->hora_finCurso)->format('H:i');
+
+            $datos[] = [
+                'nombre' => $curso->nombreCurso,
+                'precio' => $curso->precioCurso == 0 ? __('Gratuito') : number_format($curso->precioCurso,2,',','').'€',
+                'fecha' => $fecha.__(' (').$hora.__(')'),
+                'direccion' => $curso->direccionGimnasio,
+                'telefono' => $curso->telefonoGimnasio,
+                'email' => $curso->emailGimnasio
+            ];
+        }
+
+        return $datos;
+    }
 }

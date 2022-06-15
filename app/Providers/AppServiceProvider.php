@@ -49,7 +49,12 @@ class AppServiceProvider extends ServiceProvider
                         'text' => __('Inicio'),
                         'icon' => 'fas fa-fw fa-home',
                         'url' => '/usuario',
-                    ]
+                    ],
+                    [
+                        'text' => __('Perfil'),
+                        'icon' => 'fas fa-fw fa-user',
+                        'url' => '/usuario/perfil/edit',
+                    ],
                 );
             }
 
@@ -149,16 +154,21 @@ class AppServiceProvider extends ServiceProvider
                     [
                         'text'    => 'Gimnasio',
                         'icon'    => 'fas fa-fw fa-university',
-                        'url'  => '#',
+                        'url'  => '/usuario/gimnasios',
                     ],
                     [
                         'text'    => 'Cursos',
                         'icon'    => 'fas fa-fw fa-graduation-cap',
-                        'url'  => '#',
+                        'url'  => '/usuario/cursos',
                     ],
                     [
                         'text'    => 'Campeonatos',
                         'icon'    => 'fas fa-fw fa-trophy',
+                        'url'  => '/usuario/campeonatos',
+                    ],
+                    [
+                        'text'    => __('Cuota'),
+                        'icon'    => 'fas fa-fw fa-credit-card',
                         'url'  => '#',
                     ],
                     [

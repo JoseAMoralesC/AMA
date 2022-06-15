@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Normal\AAMM;
+namespace App\Http\Controllers\Normal\Curso;
 
 use Illuminate\Routing\Controller;
-use App\Services\AAMM\AAMMService;
+use App\Services\Curso\CursoService;
 
 class IndexController extends Controller
 {
-    private $campeonatoService;
+    private $cursoService;
 
-    public function __construct(CampeonatoService $campeonatoService){
-        $this->campeonatoService = $campeonatoService;
+    public function __construct(CursoService $cursoService){
+        $this->cursoService = $cursoService;
     }
 
     public function index(){
-        return view('normal.gimnasio.index');
+        //dd($this->cursoService->verCursosDisponiblesUsuario());
+        return view('normal.cursos.index');
     }
 
     public function indexAjax(){
-        $data = $this->campeonatoService->mountDataIndex();
+        $data = $this->cursoService->verCursosDisponiblesUsuario();
         return datatables()->of($data)->make(true);
     }
 }

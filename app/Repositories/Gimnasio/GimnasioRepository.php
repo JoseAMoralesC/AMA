@@ -41,8 +41,8 @@ class GimnasioRepository{
     }
 
     public function verGimnasiosUsuario(){
-        return Gimnasio::select('gimnasios.nombre')->
-        join('usuarios_gimnasios','usuarios_gimnasios.gimnasio_id','gimnasios_disciplinas.gimnasio_id')->
+        return Gimnasio::select('gimnasios.nombre as nombre','gimnasios.direccion as direccion', 'gimnasios.telefono as telefono', 'gimnasios.email as email')->
+        join('usuarios_gimnasios','usuarios_gimnasios.gimnasio_id','gimnasios.id')->
         where('usuarios_gimnasios.usuario_id', Auth::user()->id)->get();
     }
 }

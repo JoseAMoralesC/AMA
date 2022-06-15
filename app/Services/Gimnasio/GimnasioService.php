@@ -77,4 +77,19 @@ class GimnasioService{
     public function gimnasiosSelect(){
         return $this->gimnasioRepository->gimnasiosSelect();
     }
+
+    public function verGimnasiosUsuario(){
+        $datos = [];
+
+        foreach($this->gimnasioRepository->verGimnasiosUsuario() as $gimnasio){
+            $datos[] = [
+                'nombre' => $gimnasio->nombre,
+                'direccion' => $gimnasio->direccion,
+                'telefono' => $gimnasio->telefono,
+                'email' => $gimnasio->email
+            ];
+        }
+
+        return $datos;
+    }
 }

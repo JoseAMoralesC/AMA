@@ -189,9 +189,22 @@ Route::middleware(['auth.normal'])->name('usuario.')->prefix('/usuario')->group(
         Route::get('/indexAjax', [App\Http\Controllers\Normal\AAMM\IndexController::class,'indexAjax'])->name('indexAjax');
     });
 
+    //GIMNASIOS
+    Route::prefix('/gimnasios/')->name('gimnasios.')->group(function(){
+        Route::get('', [App\Http\Controllers\Normal\Gimnasio\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Normal\Gimnasio\IndexController::class,'indexAjax'])->name('indexAjax');
+    });
+
     //CURSOS
     Route::prefix('/cursos/')->name('cursos.')->group(function(){
         Route::get('', [App\Http\Controllers\Normal\Curso\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Normal\Curso\IndexController::class,'indexAjax'])->name('indexAjax');
+    });
+
+    //CAMPEONATOS
+    Route::prefix('/campeonatos/')->name('campeonatos.')->group(function(){
+        Route::get('', [App\Http\Controllers\Normal\Campeonato\IndexController::class,'index'])->name('index');
+        Route::get('/indexAjax', [App\Http\Controllers\Normal\Campeonato\IndexController::class,'indexAjax'])->name('indexAjax');
     });
 
     //PERFIL

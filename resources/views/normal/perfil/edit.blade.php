@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        {{ Form::open(array('class' => 'form-horizontal', 'method' => 'post' , 'route' => array('admin.usuarios.update', $usuario->id))) }}
+        {{ Form::open(array('class' => 'form-horizontal', 'method' => 'post' , 'route' => array('usuario.perfil.update', \Auth::user()->id))) }}
             {{ method_field('PUT') }}
             {{ Form::token() }}
             @include('admin.usuarios._form')

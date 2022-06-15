@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Usuario;
+namespace App\Http\Controllers\Normal\Perfil;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -51,9 +51,10 @@ class UpdateController extends Controller
             DB::connection()->rollBack();
             Log::error($e);
 
-            return redirect()->route('admin.usuarios.index')->with('error','El usuario '.$request->nombre.' no se ha podido actualizar');
+           return redirect()->route('usuario.index')->with('error','Tu perfil, '.$request->nombre.' '.$request->apellido1.', no se ha podido actualizar');
         }
 
-        return redirect()->route('admin.usuarios.index')->with('success','El usuario '.$request->nombre.' se ha actualizado con exito');
+
+        return redirect()->route('usuario.index')->with('success','Tu perfil, '.$request->nombre.' '.$request->apellido1.', se ha actualizado con exito.');
     }
 }

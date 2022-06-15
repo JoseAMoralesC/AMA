@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', __('Gimnasios'))
+@section('title', __('Cursos'))
 
 @section('content_header')
-    <h1>{{ __('Mis gimnasios') }}</h1>
+    <h1>{{ __('Cursos') }}</h1>
 @stop
 @section('content')
     <div class="card card-outline card-danger">
@@ -20,9 +20,11 @@
             @include('flash-message')
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="datatable-gimnasios" style="width:100%">
+                <table class="table table-bordered table-striped" id="datatable-cursos" style="width:100%">
                     <thead>
                         <th class="text-center">{{__('Nombre')}}</th>
+                        <th class="text-center">{{__('Precio')}}</th>
+                        <th class="text-center">{{__('Fecha')}}</th>
                         <th class="text-center">{{__('Direccion')}}</th>
                         <th class="text-center">{{__('Telefono')}}</th>
                         <th class="text-center">{{__('Email')}}</th>
@@ -38,7 +40,7 @@
 @section('js')
 <script>
     function montarTabla() {
-        return $('#datatable-gimnasios').DataTable({
+        return $('#datatable-cursos').DataTable({
             "order": [[0, "asc"]],
             "stateSave": true,
             "serverSide": true,
@@ -46,11 +48,13 @@
             "bJQueryUI": true,
             "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "{{__('Todos')}}"]],
             "ajax": {
-                url: "{{ route('usuario.gimnasios.indexAjax') }}",
+                url: "{{ route('usuario.cursos.indexAjax') }}",
                 method: "get",
             },
             "columns": [
                 {data: 'nombre', 'className': 'text-center'},
+                {data: 'precio', 'className': 'text-center'},
+                {data: 'fecha', 'className': 'text-center'},
                 {data: 'direccion', 'className': 'text-center'},
                 {data: 'telefono', 'className': 'text-center'},
                 {data: 'email', 'className': 'text-center'},

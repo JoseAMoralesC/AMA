@@ -33,4 +33,7 @@ class CampeonatoRepository{
     public function numCampeonatosDisponibles(){
         return Campeonato::query()->whereDate('fecha_ini', '>', Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->count();
     }
+    public function verCampeonatosDisponibles(){
+        return Campeonato::query()->whereDate('fecha_ini', '>', Carbon::now()->timezone('Europe/Madrid')->format('Y-m-d'))->get();
+    }
 }

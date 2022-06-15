@@ -66,4 +66,23 @@ class CampeonatoService{
     public function gimnasiosSelect(){
         return $this->campeonatoRepository->gimnasiosSelect();
     }
+
+    public function verCampeonatosDisponibles(){
+        $datos = [];
+        $fecha = "";
+        $hora = "";
+
+        foreach($this->campeonatoRepository->verCampeonatosDisponibles() as $campeonato){
+            $fecha = $campeonato->fecha_fin != null ? __('Desde ').Carbon::parse($campeonato->fecha_ini)->format('d M Y').__(' hasta ').Carbon::parse($campeonato->fecha_fin)->format('d M Y') : 'El '.Carbon::parse($campeonato->fecha_ini)->format('d M Y');
+            $hora = Carbon::parse($campeonato->hora_ini)->format('H:i').' - '.Carbon::parse($campeonato->hora_fin)->format('H:i');
+            $datos[] = [
+                'nombre' => $campeonato->nombre,
+                'direccion' => $campeonato->direccion,
+                'fecha' => $fecha.__(' (').$hora.__(')'),
+                'reglamento' => $campeonato->reglamentos->nombre
+            ];
+        }
+
+        return $datos;
+    }
 }
